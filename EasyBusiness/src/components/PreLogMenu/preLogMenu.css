@@ -1,0 +1,13 @@
+.MenuSection {
+  text-align: right;
+}
+
+#menu {
+  background: rgba(0, 0, 0, 7.5);
+  color: white;
+}
+
+#menuItem:hover {
+  color: skyblue;
+  border-bottom: 2px solid skyblue;
+}
