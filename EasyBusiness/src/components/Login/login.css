@@ -23,13 +23,13 @@
 
   #login-btn{
     color:rgba(255, 255, 255, 255);
-    background:rgba(0, 0, 0, 0.75); 
+    background:rgba(0, 0, 0, 0.9); 
 
   }
 
   #forgot-password-text{
-    color:rgba(0, 0, 0, 0.75); 
+    color:rgba(0, 0, 0, 0.9); 
   }
   #register-text{
-    color:rgba(0, 0, 0, 0.75); 
+    color:rgba(0, 0, 0, 0.9); 
   }

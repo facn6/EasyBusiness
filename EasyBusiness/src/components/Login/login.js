@@ -49,7 +49,7 @@ class NormalLoginForm extends Component {
           <Button type="primary" htmlType="submit" className="login-form-button" id="login-btn">
             Login
           </Button>
-          Or <a href="/register" id="register-text">create a new account</a>
+          <a href="/register" id="register-text">Create a new account</a>
         </Form.Item>
       </Form>
     );
