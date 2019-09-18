@@ -1,0 +1,35 @@
+ .login-form {
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+     
+  }
+ .login-form-forgot {
+    float: right;
+  }
+  .login-form-button {
+    width: 100%;
+  }
+
+  
+  #login-label{
+    text-align: center;
+    color:rgba(0, 0, 0, 0.794);
+    font-size: 150%;
+    display: flex;
+    justify-content: center;
+    margin-top: 25%;
+  }
+
+  #login-btn{
+    color:rgba(255, 255, 255, 255);
+    background:rgba(0, 0, 0, 0.75); 
+
+  }
+
+  #forgot-password-text{
+    color:rgba(0, 0, 0, 0.75); 
+  }
+  #register-text{
+    color:rgba(0, 0, 0, 0.75); 
+  }
