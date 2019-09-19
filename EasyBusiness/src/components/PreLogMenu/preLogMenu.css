@@ -1,13 +1,26 @@
-.MenuSection {
-  text-align: right;
-}
-
-#menu {
-  background: rgba(0, 0, 0,0.9 );
+.menu {
+  background: rgba(0, 0, 0, 0.9);
   color: white;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  box-shadow: 5px 5px 5px skyblue;
 }
 
-#menuItem:hover {
+p {
+  border: 2px solid transparent;
+  background: transparent;
+  padding: 10px 20px;
+  margin: 0px 10px;
+  border-bottom: 2px solid transparent;
+}
+
+p:hover {
   color: skyblue;
   border-bottom: 2px solid skyblue;
+}
+
+#logo {
+  align-items: left;
 }
