@@ -1,62 +1,24 @@
-import React ,{Component} from 'react';
+import React from 'react';
 import './login.css';
-import 'antd/dist/antd.css';
-import { Form, Icon, Input, Button} from 'antd';
+import Button from '../Button/button';
+import Input from '../Input/input';
+import Label from '../Label/label';
+import A from '../A/a';
 
-class NormalLoginForm extends Component {
-  handleSubmit = e => {
-    e.preventDefault();
-    this.props.form.validateFields((err, values) => {
-      if (!err) {
-        console.log('Received values of form: ', values);
-      }
-    });
-  };
+const LoginForm = props =>{
+  return(
+    <form class="login-form">
+    <Label value="Login"/>
+    
+    <Input  placeholder="username"/>
+    <Input type="password" placeholder="password"/>
+    <A value="Forgot password?" href="reset-password"/>
+    
+    <Button value="Login" />
+    <A value="Create new account" href="reset-password"/>
 
-  render() {
-    const { getFieldDecorator } = this.props.form;
-    return (
-     
-      <Form onSubmit={this.handleSubmit} className="login-form">
-        <Form.Item>
-          <label id="login-label">Login</label>
-        </Form.Item>
-        <Form.Item>
-          {getFieldDecorator('username', {
-            rules: [{ required: true, message: 'Please input your username!' }],
-          })(
-            <Input
-              prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
-              placeholder="Username"
-            />,
-          )}
-        </Form.Item>
-        <Form.Item>
-          {getFieldDecorator('password', {
-            rules: [{ required: true, message: 'Please input your Password!' }],
-          })(
-            <Input
-              prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
-              type="password"
-              placeholder="Password"
-            />,
-          )}
-        </Form.Item>
-        <Form.Item>
-          <a className="login-form-forgot" href="/reset-password" id="forgot-password-text">
-            Forgot password
-          </a>
-          <Button type="primary" htmlType="submit" className="login-form-button" id="login-btn">
-            Login
-          </Button>
-          <a href="/register" id="register-text">Create a new account</a>
-        </Form.Item>
-      </Form>
-    );
-  }
+    </form>
+  )
 }
 
-const WrappedNormalLoginForm = Form.create({ name: 'normal_login' })(NormalLoginForm);
-
-
-export default WrappedNormalLoginForm;
+export default LoginForm; 
