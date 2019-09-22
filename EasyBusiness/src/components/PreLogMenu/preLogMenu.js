@@ -1,6 +1,7 @@
 import React from "react";
 import { Icon } from "antd";
 import "./preLogMenu.css";
+import { Link } from "react-router-dom";
 
 class PreLogMenu extends React.Component {
   state = {
@@ -16,17 +17,13 @@ class PreLogMenu extends React.Component {
             onClick={this.handleClick}
             selectedKeys={[this.state.current]}
           >
-            <p key="Login">
+            <Link to="/login" key="Login">
               <Icon type="login" /> Login
-            </p>
+            </Link>
 
-            <p key="Register">
+            <Link to="/register" key="Register">
               <Icon type="user-add" /> Register
-            </p>
-
-            <p key="ContactUs">
-              <Icon type="mail" /> Contact Us
-            </p>
+            </Link>
           </form>
         </div>
       </section>
