@@ -2,10 +2,32 @@
   background: white;
 }
 
-.login-section {
-  margin-top: 70px;
+.logo {
+  width: 200px;
+  height: auto;
+  margin-top: 10px;
+  margin-left: 10px;
+  border: transparent 3px solid;
+  border-bottom: rgb(0, 174, 255) 3px solid;
 }
 
-.register-section {
-  margin-top: 70px;
+.bg {
+  width: 400px;
+  height: auto;
+  margin-top: 10px;
+  margin-left: 10px;
+}
+
+.blue {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+footer {
+  margin-top: 50px;
+  text-align: center;
+  padding: 20px 50px;
+  background: rgb(0, 183, 255);
+  color: white;
 }
