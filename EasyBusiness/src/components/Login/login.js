@@ -3,8 +3,9 @@ import React, { Component } from "react";
 import "./login.css";
 import "antd/dist/antd.css";
 import { Link } from "react-router-dom";
-import { Form, Icon, Input, Button } from "antd";
-
+import { Form} from "antd";
+import Button from '../Button/button';
+import Input from '../Input/input';
 class NormalLoginForm extends Component {
   handleSubmit = e => {
     e.preventDefault();
@@ -16,44 +17,20 @@ class NormalLoginForm extends Component {
   };
 
   render() {
-    const { getFieldDecorator } = this.props.form;
     return (
       <Form onSubmit={this.handleSubmit} className="login-form">
         <Form.Item>
           <label id="login-label">Login</label>
         </Form.Item>
         <br></br>
-        <Form.Item>
-          {getFieldDecorator("username", {
-            rules: [{ required: true, message: "Please input your username!" }]
-          })(
-            <Input
-              prefix={<Icon type="user" style={{ color: "rgba(0,0,0,.25)" }} />}
-              placeholder="Username"
-            />
-          )}
-        </Form.Item>
-        <Form.Item>
-          {getFieldDecorator("password", {
-            rules: [{ required: true, message: "Please input your Password!" }]
-          })(
-            <Input
-              prefix={<Icon type="lock" style={{ color: "rgba(0,0,0,.25)" }} />}
-              type="password"
-              placeholder="Password"
-            />
-          )}
-        </Form.Item>
+       <Input  placeholder="username"/>
+       <Input type="password" placeholder="password"/>
         <Form.Item>
           <Link to="/reset-password" className="reset-password-link">
             Forgot your password
           </Link>
         </Form.Item>
-        <Form.Item>
-          <Button type="primary" htmlType="submit" id="login-button">
-            Login
-          </Button>
-        </Form.Item>
+        <Button value="Login" />
         <Form.Item>
           <Link to="/register">Create a new account</Link>
         </Form.Item>
@@ -67,29 +44,8 @@ const WrappedNormalLoginForm = Form.create({ name: "normal_login" })(
 );
 
 export default WrappedNormalLoginForm;
-// =======
-// import React from 'react';
-// import './login.css';
-// import Button from '../Button/button';
-// import Input from '../Input/input';
-// import Label from '../Label/label';
-// import A from '../A/a';
 
-// const LoginForm = props =>{
-//   return(
-//     <form class="login-form">
-//     <Label value="Login"/>
+   
+
     
-//     <Input  placeholder="username"/>
-//     <Input type="password" placeholder="password"/>
-//     <A value="Forgot password?" href="reset-password"/>
     
-//     <Button value="Login" />
-//     <A value="Create new account" href="reset-password"/>
-
-//     </form>
-//   )
-// }
-
-// export default LoginForm; 
-// >>>>>>> master

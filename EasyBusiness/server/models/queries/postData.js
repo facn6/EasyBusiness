@@ -5,6 +5,8 @@ const postData = (
     password,
     username_phone_number) => {
     return new Promise((resolve,reject)=>{
+      console.log("post data");
+      
       dbConnection.query(
       "INSERT INTO users (username,password,username_phone_number) VALUES ($1, $2, $3)",
       [ username,
