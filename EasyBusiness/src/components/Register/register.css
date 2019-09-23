@@ -1,10 +1,10 @@
-.reset-form {
+.register-form {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-#reset-label {
+#register-label {
   color: rgba(0, 0, 0, 0.794);
   font-size: 25px;
 }
@@ -14,12 +14,5 @@
 }
 
 .login-link:hover {
-  color: skyblue;
-}
-.register-link {
-  color: rgb(0, 183, 255);
-}
-
-.register-link:hover {
   color: skyblue;
 }
