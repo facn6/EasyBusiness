@@ -13,6 +13,6 @@ app.get("/data", (req, res) => {
   res.json(data);
 });
 
-const port = 5000;
+const port = 5000 || process.env.PORT;
 
 app.listen(port, () => console.log(`Server start on port ${port}`));
