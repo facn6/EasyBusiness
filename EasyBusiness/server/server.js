@@ -12,6 +12,6 @@ app.get("/data", (req, res) => {
   res.json(data);
 });
 
-const port = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5000;
 
-app.listen(port, () => console.log(`Server start on port ${port}`));
+app.listen(PORT, () => console.log(`Server start on port ${port}`));
