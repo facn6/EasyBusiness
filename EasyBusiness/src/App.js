@@ -3,7 +3,7 @@ import "./App.css";
 import LoginForm from "./components/Login/login";
 import PreLogMenu from "./components/PreLogMenu/preLogMenu";
 import RegisterForm from "./components/Register/register";
-import ResetForm from "./components/ResetPass/resetpass";
+import ResetForm from "./components/ResetPassword/resetPassword";
 import logo from "./ebl.png";
 import background from "./background.png";
 
@@ -30,7 +30,7 @@ class App extends Component {
             <Route path="/reset-password" component={ResetForm} />
           </section>
         </body>
-        <footer>Easy Business | Internal Project With React JS </footer>
+        <footer> Easy Business | Internal Project With React JS </footer>
       </Router>
     );
   }

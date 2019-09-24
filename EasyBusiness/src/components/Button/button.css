@@ -1,6 +1,14 @@
-.btn{
-    color:rgba(255, 255, 255, 255);
-    background:rgba(0, 0, 0, 0.9); 
-    width:20%;
-    margin-top:2%;
-  }
+#btn {
+  margin-top: 30px;
+  color: white;
+  background: black;
+  width: 120px;
+  height: 30px;
+  border-radius: 5px;
+}
+
+#btn:hover {
+  background: rgb(0, 183, 255);
+  transition: 0.5s;
+  width: 150px;
+}

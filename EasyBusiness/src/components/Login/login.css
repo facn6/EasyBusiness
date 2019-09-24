@@ -1,29 +1,7 @@
 .login-form {
-  margin-top: 400px;
-
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-
-.login-form input {
-  width: 300px;
-}
-
-.login-form input:hover {
-  width: 320px;
-}
-
-#login-button {
-  border: transparent;
-  text-align: center;
-  color: rgba(255, 255, 255, 255);
-  background: rgba(0, 0, 0, 0.9);
-  width: 170px;
-}
-
-#login-button:hover {
-  width: 190px;
 }
 
 #login-label {
@@ -31,6 +9,23 @@
   font-size: 25px;
 }
 
-.reset-password-link {
-  margin-right: 160px;
+.register-link {
+  color: rgb(0, 183, 255);
+}
+
+.register-link:hover {
+  color: skyblue;
+}
+
+div {
+  margin-top: 25px;
+}
+
+.reset-link {
+  margin-right: 140px;
+  color: rgb(0, 183, 255);
+}
+
+.reset-link:hover {
+  color: skyblue;
 }

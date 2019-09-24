@@ -1,51 +1,52 @@
-
-import React, { Component } from "react";
+import React, { useState } from "react";
 import "./login.css";
-import "antd/dist/antd.css";
+
 import { Link } from "react-router-dom";
-import { Form} from "antd";
-import Button from '../Button/button';
-import Input from '../Input/input';
-class NormalLoginForm extends Component {
-  handleSubmit = e => {
-    e.preventDefault();
-    this.props.form.validateFields((err, values) => {
-      if (!err) {
-        console.log("Received values of form: ", values);
-      }
-    });
-  };
 
-  render() {
-    return (
-      <Form onSubmit={this.handleSubmit} className="login-form">
-        <Form.Item>
-          <label id="login-label">Login</label>
-        </Form.Item>
-        <br></br>
-       <Input  placeholder="username"/>
-       <Input type="password" placeholder="password"/>
-        <Form.Item>
-          <Link to="/reset-password" className="reset-password-link">
-            Forgot your password
-          </Link>
-        </Form.Item>
-        <Button value="Login" />
-        <Form.Item>
-          <Link to="/register">Create a new account</Link>
-        </Form.Item>
-      </Form>
-    );
-  }
-}
+import Input from "../Input/input";
+import Button from "../Button/button";
 
-const WrappedNormalLoginForm = Form.create({ name: "normal_login" })(
-  NormalLoginForm
-);
+const LoginForm = () => {
+  const [user, setUser] = useState("");
+  const [password, setPassword] = useState("");
 
-export default WrappedNormalLoginForm;
+  return (
+    <form className="login-form">
+      <div>
+        <label id="login-label">Login</label>
+      </div>
+      <br></br>
+      <div>
+        <Input
+          type="text"
+          setInput={setUser}
+          Input={user}
+          placeholder="Username"
+        />
+      </div>
+      <div>
+        <Input
+          type="password"
+          setInput={setPassword}
+          Input={password}
+          placeholder="Password"
+        />
+      </div>
+      <div>
+        <Link to="/reset-password" className="reset-link">
+          Forgot your password?
+        </Link>
+      </div>
+      <div>
+        <Button type="primary" htmlType="submit" value="Login"></Button>
+      </div>
+      <div>
+        <Link to="/register" className="register-link">
+          Create a new account
+        </Link>
+      </div>
+    </form>
+  );
+};
 
-   
-
-    
-    
+export default LoginForm;

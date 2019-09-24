@@ -1,4 +1,5 @@
 .menu {
+  font-size: 15px;
   background: rgba(0, 0, 0, 0.9);
   color: white;
   display: flex;
@@ -20,7 +21,7 @@
 
 .menubar a:hover {
   color: skyblue;
-  border-bottom: 2px solid skyblue;
+  border-bottom: 2px solid rgb(0, 183, 255);
   transition: 0.7s;
 }
 
