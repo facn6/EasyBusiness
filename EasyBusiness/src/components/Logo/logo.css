@@ -1,0 +1,13 @@
+.logo {
+  margin-top: 10px;
+  width: 200px;
+  height: auto;
+  margin-left: 10px;
+  border: transparent 3px solid;
+  border-bottom: rgb(0, 174, 255) 3px solid;
+}
+
+.bg {
+  width: 400px;
+  height: auto;
+}

@@ -2,37 +2,61 @@ import React, { Component } from "react";
 import "./App.css";
 import LoginForm from "./components/Login/login";
 import PreLogMenu from "./components/PreLogMenu/preLogMenu";
+import PostLogMenu from "./components/PostLogMenu/postLogMenu";
 import RegisterForm from "./components/Register/register";
 import ResetForm from "./components/ResetPassword/resetPassword";
-import logo from "./ebl.png";
-import background from "./background.png";
+import Logo from "./components/Logo/logo";
+import Home from "./components/Home/home";
 
-const Router = require("react-router-dom").BrowserRouter;
-const Route = require("react-router-dom").Route;
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  Redirect,
+  withRouter
+} from "react-router-dom";
 
 class App extends Component {
   render() {
     return (
       <Router>
         <body>
-          <section id="menuSection">
-            <PreLogMenu />
-          </section>
-          <section class="blue">
-            <img src={logo} alt="Logo" className="logo" />
-            <img src={background} alt="bg" className="bg" />
-          </section>
-          <section className="main-section">
+          <section className="pre-log">
+            <Route path="/login" component={PreLogMenu} />
+            <Route path="/login" component={Logo} />
             <Route path="/login" component={LoginForm} />
           </section>
-          <section className="main-section">
+          <section className="pre-log">
+            <Route path="/register" component={PreLogMenu} />
+            <Route path="/register" component={Logo} />
             <Route path="/register" component={RegisterForm} />
           </section>
-          <section className="main-section">
+          <section className="pre-log">
+            <Route path="/reset-password" component={PreLogMenu} />
+            <Route path="/reset-password" component={Logo} />
             <Route path="/reset-password" component={ResetForm} />
           </section>
+          <section className="post-log">
+            <Route path="/home" component={PostLogMenu} />
+            <Route path="/home" component={Home} />
+          </section>
+          <section className="post-log">
+            <Route path="/inventory" component={PostLogMenu} />
+          </section>
+          <section className="post-log">
+            <Route path="/suppliers" component={PostLogMenu} />
+          </section>
+          <section className="post-log">
+            <Route path="/customers" component={PostLogMenu} />
+          </section>
+          <section className="post-log">
+            <Route path="/deals" component={PostLogMenu} />
+          </section>
         </body>
-        <footer> Easy Business | Internal Project With React JS </footer>
+        <footer>
+          Easy Business | Internal Founders & Coders Project With React JS |
+          Dana Falah | Ghassan Gharzuzy
+        </footer>
       </Router>
     );
   }
