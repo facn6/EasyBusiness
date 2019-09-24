@@ -14,8 +14,10 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <body className="App">
-          <PreLogMenu />
+        <body>
+          <section id="menuSection">
+            <PreLogMenu />
+          </section>
           <section class="blue">
             <img src={logo} alt="Logo" className="logo" />
             <img src={background} alt="bg" className="bg" />
