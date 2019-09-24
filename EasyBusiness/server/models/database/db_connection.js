@@ -4,12 +4,12 @@ const url = require('url');
 require('env2')('./config.env');
 
 pg.defaults.ssl = true;
-
 let options = { max: process.env.DB_MAX_CONNECTIONS || 5, };
+ 
 
 // used for heroku DB
-if (process.env.DB_URL) {
-  const params = url.parse(process.env.DB_URL);
+if (process.env.DATABASE_URL) {
+  const params = url.parse(process.env.DATABASE_URL);
   const [ username, password, ] = params.auth.split(':');
   options = Object.assign(options, {
     user: username,

@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 
 import Input from "../Input/input";
 import Button from "../Button/button";
+import { request } from "https";
 
 
 
@@ -23,7 +24,6 @@ const RegisterForm = () => {
 
     // }
     // else{
-      console.log('The button was clicked.');
       e.preventDefault();
         return fetch('/login', {
         method: "POST",
@@ -32,12 +32,15 @@ const RegisterForm = () => {
         "Content-Type": "application/json"
         },
         body: JSON.stringify({
-          username: {user},
-          password: {password},
-          username_phone_number: {phone},
+          username: user,
+          password: password,
+          username_phone_number: phone
         })
+   
         })
+        
     .then(function(response) {
+      window.location.pathname = '/login';
       console.log(response);
     })
     .catch(function (error) {
