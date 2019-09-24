@@ -2,7 +2,6 @@ const express = require("express");
 
 const app = express();
 
-const axios = require("axios");
 
 app.get("/data", (req, res) => {
   const data = [
@@ -13,6 +12,6 @@ app.get("/data", (req, res) => {
   res.json(data);
 });
 
-const port = 5000 || process.env.PORT;
+const port = process.env.PORT || 5000;
 
 app.listen(port, () => console.log(`Server start on port ${port}`));
