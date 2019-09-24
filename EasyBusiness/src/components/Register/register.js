@@ -6,14 +6,48 @@ import { Link } from "react-router-dom";
 import Input from "../Input/input";
 import Button from "../Button/button";
 
+
+
 const RegisterForm = () => {
   const [user, setUser] = useState("");
   const [password, setPassword] = useState("");
   const [confirm, setConfirm] = useState("");
   const [phone, setPhone] = useState("");
 
+
+  const addNewUser = (e)=>{
+    // if(e)
+    // {
+    //   e.preventDefault();
+    //   console.log('The button was clicked..................');
+
+    // }
+    // else{
+      console.log('The button was clicked.');
+      e.preventDefault();
+        return fetch('/login', {
+        method: "POST",
+        headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          username: {user},
+          password: {password},
+          username_phone_number: {phone},
+        })
+        })
+    .then(function(response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+
+}
+
   return (
-    <form className="register-form">
+    <form className="register-form" onSubmit={addNewUser}>
       <div>
         <label id="register-label">Register</label>
       </div>
@@ -51,7 +85,7 @@ const RegisterForm = () => {
         />
       </div>
       <div>
-        <Button type="primary" htmlType="submit" value="Register">
+        <Button type="submit" htmlType="submit" value="Register">
           Register
         </Button>
       </div>
@@ -62,6 +96,7 @@ const RegisterForm = () => {
       </div>
     </form>
   );
-};
+  };
+
 
 export default RegisterForm;

@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "antd": "^3.23.2",
+    "axios": "^0.19.0",
     "babel-plugin-import": "^1.12.1",
     "customize-cra": "^0.7.0",
     "env2": "^2.2.2",
@@ -36,7 +37,7 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://localhost:500",
+  "proxy": "http://localhost:5000",
   "devDependencies": {
     "react-app-rewired": "^1.6.2"
   }
