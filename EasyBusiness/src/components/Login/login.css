@@ -1,0 +1,31 @@
+.login-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#login-label {
+  color: rgba(0, 0, 0, 0.794);
+  font-size: 25px;
+}
+
+.register-link {
+  color: rgb(0, 183, 255);
+}
+
+.register-link:hover {
+  color: skyblue;
+}
+
+div {
+  margin-top: 25px;
+}
+
+.reset-link {
+  margin-right: 140px;
+  color: rgb(0, 183, 255);
+}
+
+.reset-link:hover {
+  color: skyblue;
+}

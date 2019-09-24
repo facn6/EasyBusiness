@@ -1,0 +1,30 @@
+.menu {
+  font-size: 15px;
+  background: rgba(0, 0, 0, 0.9);
+  color: white;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  border-top: 2px solid rgb(0, 174, 255);
+  border-bottom: 2px solid rgb(0, 174, 255);
+}
+
+.menubar a {
+  color: white;
+  border: 2px solid transparent;
+  background: transparent;
+  padding: 10px 20px;
+  margin: 0px 10px;
+  border-bottom: 2px solid transparent;
+}
+
+.menubar a:hover {
+  color: skyblue;
+  border-bottom: 2px solid rgb(0, 183, 255);
+  transition: 0.7s;
+}
+
+#logo {
+  align-items: left;
+}
