@@ -1,0 +1,10 @@
+#searchIcon {
+  font-size: 25px;
+}
+
+.searchSection {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  align-items: center;
+}

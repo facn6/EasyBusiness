@@ -1,4 +1,5 @@
 #btn {
+  transition: 0.3s;
   margin-top: 30px;
   color: white;
   background: black;
