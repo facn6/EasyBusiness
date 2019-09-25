@@ -1,10 +1,17 @@
 BEGIN;
 
+ DROP TABLE IF EXISTS users CASCADE;
+ DROP TABLE IF EXISTS customers CASCADE;
+ DROP TABLE IF EXISTS suppliers CASCADE;
+ DROP TABLE IF EXISTS deals CASCADE;
+  DROP TABLE IF EXISTS inventory CASCADE;
+
+
 CREATE TABLE users (
   user_id SERIAL PRIMARY KEY,
-  username VARCHAR(15) NOT NULL,
+  username VARCHAR NOT NULL,
   password VARCHAR NOT NULL,
-  username_phone_number INTEGER NOT NULL
+  username_phone_number VARCHAR NOT NULL
 );
 
 CREATE TABLE customers (
