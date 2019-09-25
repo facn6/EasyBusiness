@@ -17,21 +17,18 @@ app.get("/data", (req, res) => {
   res.json(data);
 });
 
-app.post('/login',(req,res,next) => {  
-  
-  postData(
-      req.body)
-      .then(res.send(true))
-      .catch(err=> next(err));    
-})
+app.post("/login", (req, res, next) => {
+  postData(req.body)
+    .then(res.send(true))
+    .catch(err => next(err));
+});
 
-app.get('/home' ,async(req,res,next)=>{
+app.get("/home", async (req, res, next) => {
   const user = await getData(req.query);
-  if(user.length === 0) return res.send(false);
-  if(user[0].password !== req.query.password) return res.send(false);
+  if (user.length === 0) return res.send(false);
+  if (user[0].password !== req.query.password) return res.send(false);
   return res.send(true);
-})
+});
 var PORT = process.env.PORT || 5000;
-
 
 app.listen(PORT, () => console.log(`Server start on port ${PORT}`));

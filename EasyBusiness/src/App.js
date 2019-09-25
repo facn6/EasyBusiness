@@ -8,19 +8,16 @@ import ResetForm from "./components/ResetPassword/resetPassword";
 import Logo from "./components/Logo/logo";
 import Home from "./components/Home/home";
 
-import {
-  BrowserRouter as Router,
-  Route,
-  Switch,
-  Redirect,
-  withRouter
-} from "react-router-dom";
+import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
 
 class App extends Component {
   render() {
     return (
       <Router>
         <body>
+          <section className="pre-log">
+            <Route exact path="/" component={() => <Redirect to="/login" />} />
+          </section>
           <section className="pre-log">
             <Route path="/login" component={PreLogMenu} />
             <Route path="/login" component={Logo} />

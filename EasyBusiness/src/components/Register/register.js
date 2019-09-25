@@ -5,9 +5,6 @@ import { Link } from "react-router-dom";
 
 import Input from "../Input/input";
 import Button from "../Button/button";
-import { request } from "https";
-
-
 
 const RegisterForm = () => {
   const [user, setUser] = useState("");
@@ -15,39 +12,28 @@ const RegisterForm = () => {
   const [confirm, setConfirm] = useState("");
   const [phone, setPhone] = useState("");
 
-
-  const addNewUser = (e)=>{
-    // if(e)
-    // {
-    //   e.preventDefault();
-    //   console.log('The button was clicked..................');
-
-    // }
-    // else{
-      e.preventDefault();
-        return fetch('/login', {
-        method: "POST",
-        headers: {
+  const addNewUser = e => {
+    e.preventDefault();
+    return fetch("/login", {
+      method: "POST",
+      headers: {
         Accept: "application/json",
         "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          username: user,
-          password: password,
-          username_phone_number: phone
-        })
-   
-        })
-        
-    .then(function(response) {
-      window.location.pathname = '/login';
-      console.log(response);
+      },
+      body: JSON.stringify({
+        username: user,
+        password: password,
+        username_phone_number: phone
+      })
     })
-    .catch(function (error) {
-      console.log(error);
-    });
-
-}
+      .then(function(response) {
+        window.location.pathname = "/login";
+        console.log(response);
+      })
+      .catch(function(error) {
+        console.log(error);
+      });
+  };
 
   return (
     <form className="register-form" onSubmit={addNewUser}>
@@ -99,7 +85,6 @@ const RegisterForm = () => {
       </div>
     </form>
   );
-  };
-
+};
 
 export default RegisterForm;
