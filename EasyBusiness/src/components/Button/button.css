@@ -1,11 +1,13 @@
 #btn {
-  transition: 0.3s;
+  transition: 0.5s;
   margin-top: 30px;
   color: white;
   background: black;
   width: 120px;
   height: 30px;
   border-radius: 5px;
+
+  border: transparent;
 }
 
 #btn:hover {
