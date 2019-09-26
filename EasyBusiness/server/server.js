@@ -8,6 +8,8 @@ var bodyParser = require("body-parser");
 app.use(bodyParser.urlencoded());
 app.use(bodyParser.json());
 
+app.use(express.static(path.join(__dirname, "../build")));
+
 app.get("/data", (req, res) => {
   const data = [
     { id: 1, fisrtName: "Dana", lastName: "Falah" },
@@ -29,6 +31,11 @@ app.get("/home", async (req, res, next) => {
   if (user[0].password !== req.query.password) return res.send(false);
   return res.send(true);
 });
+
+app.get("/*", function(req, res) {
+  res.sendFile(path.join(__dirname, "../build", "index.html"));
+});
+
 var PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => console.log(`Server start on port ${PORT}`));
