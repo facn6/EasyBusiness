@@ -1,5 +1,6 @@
 const path = require("path");
 const express = require("express");
+require("env2")("config.env");
 
 const app = express();
 const postData = require("./models/queries/postData");
