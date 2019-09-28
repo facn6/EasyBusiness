@@ -1,5 +1,6 @@
 import React from "react";
 import "./input.css";
+import { OmitProps } from "antd/lib/transfer/renderListBody";
 
 const Input = props => {
   return (

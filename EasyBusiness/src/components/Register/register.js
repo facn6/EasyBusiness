@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, Component, useEffect } from "react";
 import "./register.css";
+import validate from "../../functions/validate";
 
 import { Link } from "react-router-dom";
 
@@ -7,32 +8,45 @@ import Input from "../Input/input";
 import Button from "../Button/button";
 
 const RegisterForm = () => {
-  const [user, setUser] = useState("");
+  //Hooks, each var will be changed when the users trypes something in the input
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [confirm, setConfirm] = useState("");
   const [phone, setPhone] = useState("");
 
+  const [errors, setErrors] = useState({
+    username: "",
+    password: "",
+    confirm: "",
+    phone: ""
+  });
+
   const addNewUser = e => {
+    // Prevents the default behavaior of the browser of refreshing the page when clicking submit
     e.preventDefault();
-    return fetch("/login", {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        username: user,
-        password: password,
-        username_phone_number: phone
-      })
-    })
-      .then(function(response) {
-        window.location.pathname = "/login";
-        console.log(response);
-      })
-      .catch(function(error) {
-        console.log(error);
-      });
+
+    // Checking if there is any errors in the inputs then updating
+    setErrors(validate({ username, password, confirm, phone }));
+
+    // return fetch("/login", {
+    //   method: "POST",
+    //   headers: {
+    //     Accept: "application/json",
+    //     "Content-Type": "application/json"
+    //   },
+    //   body: JSON.stringify({
+    //     username: username,
+    //     password: password,
+    //     username_phone_number: phone
+    //   })
+    // })
+    //   .then(function(response) {
+    //     window.location.pathname = "/login";
+    //     console.log(response);
+    //   })
+    //   .catch(function(error) {
+    //     console.log(error);
+    //   });
   };
 
   return (
@@ -44,11 +58,12 @@ const RegisterForm = () => {
       <div>
         <Input
           type="text"
-          setInput={setUser}
-          Input={user}
+          setInput={setUsername}
+          Input={username}
           placeholder="Username"
         />
       </div>
+      {errors.username && <p class="error">{errors.username}</p>}
       <div>
         <Input
           type="password"
@@ -57,6 +72,8 @@ const RegisterForm = () => {
           placeholder="Password"
         />
       </div>
+      {errors.password && <p class="error">{errors.password}</p>}
+
       <div>
         <Input
           type="password"
@@ -65,6 +82,7 @@ const RegisterForm = () => {
           placeholder="Confirm Password"
         />
       </div>
+      {errors.confirm && <p class="error">{errors.confirm}</p>}
       <div>
         <Input
           type="text"
@@ -73,6 +91,7 @@ const RegisterForm = () => {
           placeholder="Phone Number"
         />
       </div>
+      {errors.phone && <p class="error">{errors.phone}</p>}
       <div>
         <Button type="submit" htmlType="submit" value="Register">
           Register
