@@ -3,7 +3,7 @@
 
 ![](https://i.imgur.com/x7rZOzY.png)
 
-:globe_with_meridians: **Website** - easybusiness.netlify.com
+:globe_with_meridians: **Website** - https://easybusinnessapp.herokuapp.com/login
 
 ---
 
