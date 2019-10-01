@@ -16,3 +16,7 @@
 .login-link:hover {
   color: skyblue;
 }
+
+.error {
+  color: red;
+}

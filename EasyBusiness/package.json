@@ -18,7 +18,7 @@
     "react-dom": "^16.9.0",
     "react-router-dom": "^5.0.1",
     "react-scripts": "^2.1.1",
-    "reactstrap": "^8.0.1"
+    "react-app-rewired": "^1.6.2"
   },
   "scripts": {
     "start": "react-app-rewired start",
@@ -41,8 +41,5 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://localhost:5000",
-  "devDependencies": {
-    "react-app-rewired": "^1.6.2"
-  }
+  "proxy": "http://localhost:5000"
 }
