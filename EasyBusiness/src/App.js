@@ -4,23 +4,21 @@ import LoginForm from "./components/Login/login";
 import PreLogMenu from "./components/PreLogMenu/preLogMenu";
 import PostLogMenu from "./components/PostLogMenu/postLogMenu";
 import RegisterForm from "./components/Register/register";
+import InventoryForm from "./components/Inventory/inventory";
 import ResetForm from "./components/ResetPassword/resetPassword";
 import Logo from "./components/Logo/logo";
 import Home from "./components/Home/home";
 
-import {
-  BrowserRouter as Router,
-  Route,
-  Switch,
-  Redirect,
-  withRouter
-} from "react-router-dom";
+import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
 
 class App extends Component {
   render() {
     return (
       <Router>
         <body>
+          <section className="pre-log">
+            <Route exact path="/" component={() => <Redirect to="/login" />} />
+          </section>
           <section className="pre-log">
             <Route path="/login" component={PreLogMenu} />
             <Route path="/login" component={Logo} />
@@ -42,6 +40,8 @@ class App extends Component {
           </section>
           <section className="post-log">
             <Route path="/inventory" component={PostLogMenu} />
+            <Route path="/inventory" component={InventoryForm} />
+
           </section>
           <section className="post-log">
             <Route path="/suppliers" component={PostLogMenu} />

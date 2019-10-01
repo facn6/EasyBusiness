@@ -49,5 +49,11 @@ VALUES
 ('Ghassan', '123456' ,0544747667),
 ('Dana', '123456' , 0547135551);
 
+INSERT INTO inventory (product_name,product_price ,product_quantity,supplier_price) 
+VALUES
+('Milk', 6 ,25, 4),
+('Cheese', 15 ,30, 10.5);
+
+
 
 COMMIT;

@@ -9,25 +9,28 @@ import Button from "../Button/button";
 const LoginForm = () => {
   const [user, setUser] = useState("");
   const [password, setPassword] = useState("");
-  const submitLoginForm = (e) =>{
+
+  const CheckUser = e => {
+    console.log(2);
     e.preventDefault();
-        return fetch(`/home?username=${user}&password=${password}`, {
-        headers: {
+    return fetch(`/home?username=${user}&password=${password}`, {
+      method: "GET",
+      headers: {
         Accept: "application/json",
         "Content-Type": "application/json"
-        },
-      }).then(function(response) {
-        window.location.pathname = '/home';
+      }
+    })
+      .then(function(response) {
         console.log(response);
+        window.location.pathname = "/home";
       })
-      .catch(function (error) {
+      .catch(function(error) {
         console.log(error);
       });
-   
-  }
+  };
 
   return (
-    <form className="login-form" onSubmit={submitLoginForm}>
+    <form className="login-form" onSubmit={CheckUser}>
       <div>
         <label id="login-label">Login</label>
       </div>
