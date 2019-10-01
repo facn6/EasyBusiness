@@ -5,6 +5,7 @@ import PreLogMenu from "./components/PreLogMenu/preLogMenu";
 import PostLogMenu from "./components/PostLogMenu/postLogMenu";
 import RegisterForm from "./components/Register/register";
 import InventoryForm from "./components/Inventory/inventory";
+import SuppliersForm from './components/Suppliers/supplier';
 import ResetForm from "./components/ResetPassword/resetPassword";
 import Logo from "./components/Logo/logo";
 import Home from "./components/Home/home";
@@ -45,6 +46,8 @@ class App extends Component {
           </section>
           <section className="post-log">
             <Route path="/suppliers" component={PostLogMenu} />
+            <Route path="/suppliers" component={SuppliersForm} />
+
           </section>
           <section className="post-log">
             <Route path="/customers" component={PostLogMenu} />

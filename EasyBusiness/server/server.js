@@ -43,7 +43,15 @@ getData.getInventoryData()
 .catch(err => next(err));
 })
 
-
+app.get('/suppliers',(req,res,next)=>{
+  getData.getSuppliersData()
+  .then(SupplierData =>
+    {
+      res.send(SupplierData)
+  })
+  .catch(err => next(err));
+  })
+  
 
 
 app.get("/*", function(req, res) {

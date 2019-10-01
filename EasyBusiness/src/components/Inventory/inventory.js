@@ -1,7 +1,7 @@
 import React , {useState , useEffect} from "react";
 import './inventory.css';
 import MaterialTable from 'material-table';
-const Inventory = props =>{
+const Inventory = () =>{
 const[state,setState] =useState({
   columns: [],
   data:[]
@@ -16,10 +16,11 @@ const[state,setState] =useState({
       setState({columns: [
         { title: 'Product', field: 'product_name' },
         { title: 'Price', field: 'product_price' },
-        { title: 'Quantity', field: 'product_quantity' }
+        { title: 'Quantity', field: 'product_quantity' },
+        { title: 'Supplier Price', field: 'supplier_price' }
+
       ],
       data:data});
-      console.log("stateeee ", state);
           
     })
     .catch(error=> console.log(error));

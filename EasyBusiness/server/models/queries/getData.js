@@ -47,10 +47,24 @@ const getInventoryData =()=> {
   
 };
 
+const getSuppliersData =()=> {
+  return new Promise((resolve,reject)=>{
+    dbConnection.query("SELECT * FROM suppliers",(err,res)=>{
+    if(err)
+    {
+      reject(err);
+    }else{
+      resolve(res.rows);
+    }
+  });
+  })
+  
+};
 
 
 module.exports = 
 {
   getData
-  ,getInventoryData
+  ,getInventoryData,
+  getSuppliersData
 };
