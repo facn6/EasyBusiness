@@ -21,7 +21,6 @@ const[state,setState] =useState({
 
       ],
       data:data});
-      console.log("stateeee " , state);
       
           
     })
