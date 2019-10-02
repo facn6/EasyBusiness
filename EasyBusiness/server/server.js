@@ -26,12 +26,25 @@ app.post("/login", (req, res, next) => {
     .catch(err => next(err));
 });
 
-app.get("/home", async (req, res, next) => {
-  const user = await getData(req.query);
+app.get(`/home`, async (req, res, next) => {
+  const user = await getData.getData(req.query);
   if (user.length === 0) return res.send(false);
   if (user[0].password !== req.query.password) return res.send(false);
   return res.send(true);
 });
+
+
+app.get('/inventory',(req,res,next)=>{
+getData.getInventoryData()
+.then(inventoryData =>
+  {
+    res.send(inventoryData)
+})
+.catch(err => next(err));
+})
+
+
+
 
 app.get("/*", function(req, res) {
   res.sendFile(path.join(__dirname, "../build", "index.html"));

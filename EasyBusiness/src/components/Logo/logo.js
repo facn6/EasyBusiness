@@ -5,8 +5,8 @@ import background from "./background.png";
 
 const Logo = () => {
   return (
-    <section className="logoSec">
-      <img src={logo} alt="Logo" className="logo" />
+    <section class="logoSec">
+      <img src={logo} alt="Logo" class="logo" />
       {/* <img src={background} alt="bg" className="bg" /> */}
     </section>
   );

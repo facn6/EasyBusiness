@@ -33,4 +33,24 @@ const getData = ({ username, password }) => {
   });
 };
 
-module.exports = getData;
+const getInventoryData =()=> {
+  return new Promise((resolve,reject)=>{
+    dbConnection.query("SELECT * FROM inventory",(err,res)=>{
+    if(err)
+    {
+      reject(err);
+    }else{
+      resolve(res.rows);
+    }
+  });
+  })
+  
+};
+
+
+
+module.exports = 
+{
+  getData
+  ,getInventoryData
+};
