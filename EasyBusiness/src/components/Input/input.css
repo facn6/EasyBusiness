@@ -1,4 +1,4 @@
-input {
+.inputt {
   color: black;
   height: 40px;
   text-align: center;
@@ -9,7 +9,7 @@ input {
   width: 300px;
 }
 
-input:hover {
+.inputt:hover {
   transition: 0.5s;
   width: 320px;
 }
