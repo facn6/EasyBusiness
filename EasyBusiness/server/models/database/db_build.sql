@@ -25,7 +25,7 @@ CREATE TABLE suppliers (
   supplier_id SERIAL PRIMARY KEY,
   supplier_name VARCHAR(30) NOT NULL,
   supplier_phone_number INTEGER NOT NULL,
-  supplier_location INTEGER,
+  supplier_location VARCHAR,
   supplier_products VARCHAR(100)
 );
 
@@ -53,6 +53,11 @@ INSERT INTO inventory (product_name,product_price ,product_quantity,supplier_pri
 VALUES
 ('Milk', 6 ,25, 4),
 ('Cheese', 15 ,30, 10.5);
+
+INSERT INTO suppliers (supplier_name,supplier_phone_number ,supplier_location,supplier_products) 
+VALUES
+('Malk', 0547521542 ,'Smea', 'dairy'),
+('Ibrahim', 0502545874 ,'Tarshiha', 'meat');
 
 
 
