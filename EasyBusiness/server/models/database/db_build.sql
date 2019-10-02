@@ -59,6 +59,11 @@ VALUES
 ('Malk', 0547521542 ,'Smea', 'dairy'),
 ('Ibrahim', 0502545874 ,'Tarshiha', 'meat');
 
+INSERT INTO customers (customer_name,customer_phone_number ,dept) 
+VALUES
+('Jehan', 0547521542 ,0.00),
+('Asel', 0502545874 ,150.00);
+
 
 
 COMMIT;

@@ -61,10 +61,24 @@ const getSuppliersData =()=> {
   
 };
 
+const getCustomersData =()=> {
+  return new Promise((resolve,reject)=>{
+    dbConnection.query("SELECT * FROM customers",(err,res)=>{
+    if(err)
+    {
+      reject(err);
+    }else{
+      resolve(res.rows);
+    }
+  });
+  })
+  
+};
 
 module.exports = 
 {
   getData
   ,getInventoryData,
-  getSuppliersData
+  getSuppliersData,
+  getCustomersData
 };

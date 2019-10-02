@@ -45,14 +45,22 @@ getData.getInventoryData()
 
 app.get('/suppliers',(req,res,next)=>{
   getData.getSuppliersData()
-  .then(SupplierData =>
+  .then(SuppliersData =>
     {
-      res.send(SupplierData)
+      res.send(SuppliersData)
   })
   .catch(err => next(err));
   })
   
-
+  app.get('/customers',(req,res,next)=>{
+    getData.getCustomersData()
+    .then(CustomersData =>
+      {
+        res.send(CustomersData)
+    })
+    .catch(err => next(err));
+    })
+    
 
 app.get("/*", function(req, res) {
   res.sendFile(path.join(__dirname, "../build", "index.html"));
