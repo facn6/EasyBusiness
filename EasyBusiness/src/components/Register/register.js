@@ -28,25 +28,25 @@ const RegisterForm = () => {
     // Checking if there is any errors in the inputs then updating
     setErrors(validate({ username, password, confirm, phone }));
 
-    // return fetch("/login", {
-    //   method: "POST",
-    //   headers: {
-    //     Accept: "application/json",
-    //     "Content-Type": "application/json"
-    //   },
-    //   body: JSON.stringify({
-    //     username: username,
-    //     password: password,
-    //     username_phone_number: phone
-    //   })
-    // })
-    //   .then(function(response) {
-    //     window.location.pathname = "/login";
-    //     console.log(response);
-    //   })
-    //   .catch(function(error) {
-    //     console.log(error);
-    //   });
+    return fetch("/register", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        username: username,
+        password: password,
+        username_phone_number: phone
+      })
+    })
+      .then(function(response) {
+        window.location.pathname = "/login";
+        console.log(response);
+      })
+      .catch(function(error) {
+        console.log(error);
+      });
   };
 
   return (
@@ -93,7 +93,7 @@ const RegisterForm = () => {
       </div>
       {errors.phone && <p class="error">{errors.phone}</p>}
       <div>
-        <Button type="submit" htmlType="submit" value="Register">
+        <Button type="submit" htmlType="submit" value="Register" onSubmit="addNewUser()">
           Register
         </Button>
       </div>
