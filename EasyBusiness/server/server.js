@@ -26,11 +26,16 @@ postData.postUserData(req.body)
   .catch(err => next(err));
 });
 
-app.get(`/home`, async (req, res, next) => {
-const user = await getData.getData(req.query);
-if (user.length === 0) return res.send(false);
-if (user[0].password !== req.query.password) return res.send(false);
-return res.send(true);
+app.get(`/login`, async (req, res, next) => {
+  try {
+    const user = await getData.getData(req.query);    
+    if (user.length === 0) return res.send({success:false});
+    return res.send({success: true});
+    
+  } catch (error) {
+    return res.send({success: false});
+    
+  }
 });
 
 
