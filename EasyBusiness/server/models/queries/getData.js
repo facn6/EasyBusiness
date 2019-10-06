@@ -14,7 +14,6 @@ const getData = ({ username, password }) => {
         if (res.rows.length === 0) {
           return reject("User not found in our Database");
         }
-        console.log(res.rows);
         //res.rows[0].password - hashed password in our db
         const hashedPass = res.rows[0].password;
 
