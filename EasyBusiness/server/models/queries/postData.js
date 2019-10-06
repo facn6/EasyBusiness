@@ -145,6 +145,71 @@ const deleteCusomerData = ({customer_id:customerId}) => {
   });
 };
 
+const postSupplierData = ({
+  supplier_name,
+  supplier_phone_number,
+  supplier_location,
+  supplier_products
+}) => {
+      return new Promise((resolve, reject) => {
+        dbConnection.query(
+          "INSERT INTO suppliers (  supplier_name, supplier_phone_number,supplier_location, supplier_products) VALUES ($1, $2, $3, $4)",
+          [  supplier_name,
+            supplier_phone_number,
+            supplier_location,
+            supplier_products],
+          (err, res) => {
+            if (err) {
+              reject(err);
+            } else {
+              resolve(res);
+            }
+          }
+        );
+  });
+};
+
+const updateSupplierData = ({
+  supplier_id,
+  supplier_name,
+  supplier_phone_number,
+  supplier_location,
+  supplier_products
+}) => {
+      return new Promise((resolve, reject) => {
+        dbConnection.query(
+          "UPDATE suppliers SET supplier_name=$2 , supplier_phone_number=$3 , supplier_location=$4 , supplier_products=$5  WHERE supplier_id=$1",
+          [  supplier_id,
+            supplier_name,
+            supplier_phone_number,
+            supplier_location,
+            supplier_products],
+          (err, res) => {
+            if (err) {
+              reject(err);
+            } else {
+              resolve(res);
+            }
+          }
+        );
+  });
+};
+
+const deleteSupplierData = ({supplier_id:supplierId}) => {
+      return new Promise((resolve, reject) => {
+        dbConnection.query(
+          "DELETE FROM suppliers WHERE supplier_id=$1",
+          [supplierId],
+          (err, res) => {
+            if (err) {
+              reject(err);
+            } else {              
+              resolve(res);
+            }
+          }
+        );
+  });
+};
 
 module.exports = {
   postUserData,
@@ -153,5 +218,8 @@ module.exports = {
   updateInventoryData,
   postCusomerData,
   updateCusomerData,
-  deleteCusomerData
+  deleteCusomerData,
+  postSupplierData,
+  updateSupplierData,
+  deleteSupplierData
 }
