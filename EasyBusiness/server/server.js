@@ -88,6 +88,32 @@ app.get('/suppliers',(req,res,next)=>{
     .catch(err => next(err));
     })
     
+    app.post('/customers/delete',(req,res,next)=>{  
+      postData.deleteCusomerData(req.body)
+      .then(CustomersData =>
+        {
+          res.send(CustomersData)
+      })
+      .catch(err => next(err));
+      })
+    
+      app.post('/customers/add',(req,res,next)=>{  
+        postData.postCusomerData(req.body)
+        .then(CustomersData =>
+          {
+            res.send(CustomersData)
+        })
+        .catch(err => next(err));
+        })
+      
+        app.post('/customers/update',(req,res,next)=>{  
+          postData.updateCusomerData(req.body)
+          .then(CustomersData =>
+            {
+              res.send(CustomersData)
+          })
+          .catch(err => next(err));
+          })
 
 app.get("/*", function(req, res) {
   res.sendFile(path.join(__dirname, "../build", "index.html"));

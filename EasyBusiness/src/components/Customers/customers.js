@@ -15,15 +15,73 @@ const Customers = () => {
       .then(function(data) {
         setState({
           columns: [
+            { title: "Id", field: "customer_id" , editable:"never" },
             { title: "Name", field: "customer_name" },
             { title: "Phone Number", field: "customer_phone_number" },
-            { title: "Dept", field: "dept" }
+            { title: "Debt", field: "debt" }
           ],
           data: data
         });
       })
       .catch(error => console.log(error));
-  });
+  },[]);
+
+  function deleteCustomer(customerId) {
+        
+    fetch('/customers/delete',{
+
+    method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        customer_id: customerId
+      })
+      })
+      .then(res => res.json())
+      .catch(error => console.log(error));
+  }
+
+  function addNewCustomer(customerName,customerPhoneNumber ,debt) {
+        
+    fetch('/customers/add',{
+
+    method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        customer_name: customerName,
+        customer_phone_number:customerPhoneNumber,
+        debt:debt
+      })
+      })
+      .then(res => res.json())
+      .catch(error => console.log(error));
+  }
+
+
+  function updateCustomer(customerId, customerName,customerPhoneNumber ,debt) {
+        
+    fetch('/customers/update',{
+
+    method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        customer_id:customerId,
+        customer_name: customerName,
+        customer_phone_number:customerPhoneNumber,
+        debt:debt
+      })
+      })
+      .then(res => res.json())
+      .catch(error => console.log(error));
+  }
   return (
     <MaterialTable
       style={{ position: "unset" }}
@@ -45,6 +103,7 @@ const Customers = () => {
             setTimeout(() => {
               resolve();
               const data = [...state.data];
+              addNewCustomer(newData.customer_name, newData.customer_phone_number, newData.debt);
               data.push(newData);
               setState({ ...state, data });
             }, 600);
@@ -54,6 +113,7 @@ const Customers = () => {
             setTimeout(() => {
               resolve();
               const data = [...state.data];
+              updateCustomer(newData.customer_id ,newData.customer_name, newData.customer_phone_number, newData.debt)
               data[data.indexOf(oldData)] = newData;
               setState({ ...state, data });
             }, 600);
@@ -63,6 +123,7 @@ const Customers = () => {
             setTimeout(() => {
               resolve();
               const data = [...state.data];
+              deleteCustomer(oldData.customer_id)
               data.splice(data.indexOf(oldData), 1);
               setState({ ...state, data });
             }, 600);

@@ -18,7 +18,7 @@ CREATE TABLE customers (
   customer_id SERIAL PRIMARY KEY,
   customer_name VARCHAR(30) NOT NULL,
   customer_phone_number INTEGER NOT NULL,
-  dept INTEGER DEFAULT 0
+  debt INTEGER DEFAULT 0
 );
 
 CREATE TABLE suppliers (
@@ -59,7 +59,7 @@ VALUES
 ('Malk', 0547521542 ,'Smea', 'dairy'),
 ('Ibrahim', 0502545874 ,'Tarshiha', 'meat');
 
-INSERT INTO customers (customer_name,customer_phone_number ,dept) 
+INSERT INTO customers (customer_name,customer_phone_number ,debt) 
 VALUES
 ('Jehan', 0547521542 ,0.00),
 ('Asel', 0502545874 ,150.00);
