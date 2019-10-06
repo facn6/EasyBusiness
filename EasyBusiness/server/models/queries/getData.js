@@ -14,18 +14,18 @@ const getData = ({ username, password }) => {
         if (res.rows.length === 0) {
           return reject("User not found in our Database");
         }
-        //res.rows[0].password - hashed password in our db
         const hashedPass = res.rows[0].password;
 
-        bcrypt.compare(password, hashedPass, (err, res) => {
+        bcrypt.compare(password, hashedPass, (err, ress) => {
           if (err) {
-            reject("Something wrong with the password");
+           return reject("Something wrong with the password");
           }
-          if (!res) {
-            reject("Password Incorrect");
+          if (!ress) {
+            return reject("Password Incorrect");
           }
           console.log("password is correct");
-          resolve(res.rows);
+          return resolve(res.rows);
+          
         });
       }
     );
