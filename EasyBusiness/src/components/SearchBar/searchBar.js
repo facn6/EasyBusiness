@@ -1,19 +1,18 @@
-import React, { useState } from "react";
+import React from "react";
 import "./searchBar.css";
 import { Icon } from "antd";
 
 import Input from "../Input/input";
 
 const SearchBar = props => {
-  const [search, setSearch] = useState("");
   return (
     <section className="searchSection">
       <div>
         <Input
-          type="text"
-          setInput={setSearch}
-          Input={search}
-          placeholder="Search"
+          type={props.type}
+          setInput={props.setInput}
+          Input={props.input}
+          placeholder={props.placeholder}
         />
       </div>
       <div id="searchIcon">
