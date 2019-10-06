@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from "react";
 import "./inventory.css";
 import MaterialTable from "material-table";
-import { Icon } from "@material-ui/core";
-import { textAlign, display, maxWidth } from "@material-ui/system";
-import { Transform } from "stream";
+
 const Inventory = () => {
   const [state, setState] = useState({
     columns: [],
-    data: []
+    data:[],
+    response: {}
   });
 
   useEffect(() => {
+
     fetch("/inventory")
       .then(function(response) {
         return response.json();
@@ -18,6 +18,7 @@ const Inventory = () => {
       .then(function(data) {
         setState({
           columns: [
+            { title: "id", field: "product_id" },
             { title: "Product", field: "product_name" },
             { title: "Price", field: "product_price" },
             { title: "Quantity", field: "product_quantity" },
@@ -27,7 +28,26 @@ const Inventory = () => {
         });
       })
       .catch(error => console.log(error));
-  });
+  }, []);
+
+  function deleteProduct(productId) {
+        
+    fetch('/inventory/delete',{
+
+    method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        product_id: productId
+      })
+      })
+      .then(res => res.json())
+      .catch(error => console.log(error));
+
+  }
+
   return (
     <MaterialTable
       style={{ position: "unset" }}
@@ -63,12 +83,14 @@ const Inventory = () => {
             }, 600);
           }),
         onRowDelete: oldData =>
-          new Promise(resolve => {
+          new Promise(resolve => {                        
             setTimeout(() => {
               resolve();
-              const data = [...state.data];
-              data.splice(data.indexOf(oldData), 1);
-              setState({ ...state, data });
+               const data = [...state.data];
+              deleteProduct(oldData.product_id)
+
+               data.splice(data.indexOf(oldData), 1);
+               setState({ ...state, data });
             }, 600);
           })
       }}
