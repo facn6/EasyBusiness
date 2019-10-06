@@ -51,6 +51,15 @@ app.post('/inventory/delete',(req,res,next)=>{
   })
   .catch(err => next(err));
   })
+
+  app.post('/inventory/add',(req,res,next)=>{  
+    postData.postInventoryData(req.body)
+    .then(inventoryData =>
+      {
+        res.send(inventoryData)
+    })
+    .catch(err => next(err));
+    })
   
 app.get('/suppliers',(req,res,next)=>{
   getData.getSuppliersData()
