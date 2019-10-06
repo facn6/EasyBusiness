@@ -45,9 +45,27 @@ const Inventory = () => {
       })
       .then(res => res.json())
       .catch(error => console.log(error));
-
   }
 
+  function addNewProduct(productName,productPrice ,productQuantity, supplierPrice) {
+        
+    fetch('/inventory/add',{
+
+    method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        product_name: productName,
+        product_price:productPrice,
+        product_quantity:productQuantity,
+        supplier_price:supplierPrice
+      })
+      })
+      .then(res => res.json())
+      .catch(error => console.log(error));
+  }
   return (
     <MaterialTable
       style={{ position: "unset" }}
@@ -69,6 +87,9 @@ const Inventory = () => {
             setTimeout(() => {
               resolve();
               const data = [...state.data];
+              console.log("new data" , newData);
+              
+              addNewProduct(newData.product_name, newData.product_price, newData.product_quantity , newData.supplier_price);
               data.push(newData);
               setState({ ...state, data });
             }, 600);
