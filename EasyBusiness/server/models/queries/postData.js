@@ -50,6 +50,28 @@ const postInventoryData = ({
   });
 };
 
+const updateInventoryData = ({
+  product_id,
+  product_name,
+  product_price,
+  product_quantity,
+  supplier_price
+}) => {
+      return new Promise((resolve, reject) => {
+        dbConnection.query(
+          "UPDATE inventory SET product_name=$2 , product_price=$3 , product_quantity=$4 , supplier_price=$5 WHERE product_id=$1",
+          [product_id,product_name, product_price, product_quantity,supplier_price],
+          (err, res) => {
+            if (err) {
+              reject(err);
+            } else {
+              resolve(res);
+            }
+          }
+        );
+  });
+};
+
 const deleteInventoryData = ({product_id:productId}) => {
       return new Promise((resolve, reject) => {
         dbConnection.query(
@@ -73,5 +95,6 @@ const deleteInventoryData = ({product_id:productId}) => {
 module.exports = {
   postUserData,
   postInventoryData,
-  deleteInventoryData
+  deleteInventoryData,
+  updateInventoryData
 }
