@@ -1,7 +1,7 @@
 const dbConnection = require("../database/db_connection");
 const bcrypt = require("bcrypt");
 
-const postData = ({
+const postUserData = ({
   username,
   password,
   username_phone_number: phone_number
@@ -29,4 +29,49 @@ const postData = ({
   });
 };
 
-module.exports = postData;
+const postInventoryData = ({
+  product_name,
+  product_price,
+  product_quantity,
+  supplier_price
+}) => {
+      return new Promise((resolve, reject) => {
+        dbConnection.query(
+          "INSERT INTO inventory (product_name, product_price, product_quantity,supplier_price) VALUES ($1, $2, $3,$4)",
+          [product_name, product_price, product_quantity,supplier_price],
+          (err, res) => {
+            if (err) {
+              reject(err);
+            } else {
+              resolve(res);
+            }
+          }
+        );
+  });
+};
+
+const deleteInventoryData = ({product_id:productId}) => {
+      return new Promise((resolve, reject) => {
+        dbConnection.query(
+          "DELETE FROM inventory WHERE product_id=$1",
+          [productId],
+          (err, res) => {
+            if (err) {
+              reject(err);
+            } else {
+              console.log("batata ", res);
+              
+              resolve(res);
+            }
+          }
+        );
+  });
+};
+
+
+
+module.exports = {
+  postUserData,
+  postInventoryData,
+  deleteInventoryData
+}
