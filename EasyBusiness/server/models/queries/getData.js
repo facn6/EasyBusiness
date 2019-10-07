@@ -34,7 +34,7 @@ const getData = ({ username, password }) => {
 
 const getInventoryData =()=> {
   return new Promise((resolve,reject)=>{
-    dbConnection.query("SELECT * FROM inventory",(err,res)=>{
+    dbConnection.query("SELECT *, product_name AS value,product_name AS label FROM inventory",(err,res)=>{
     if(err)
     {
       reject(err);
@@ -45,6 +45,8 @@ const getInventoryData =()=> {
   })
   
 };
+
+
 
 const getSuppliersData =()=> {
   return new Promise((resolve,reject)=>{
