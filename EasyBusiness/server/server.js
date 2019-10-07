@@ -26,7 +26,7 @@ postData.postUserData(req.body)
   .catch(err => next(err));
 });
 
-app.get(`/login`, async (req, res, next) => {
+app.get(`/login`, async (req, res, next) => {  
   try {
     const user = await getData.getData(req.query);    
     if (user.length === 0) return res.send({success:false});
