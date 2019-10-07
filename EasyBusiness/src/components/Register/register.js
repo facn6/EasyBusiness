@@ -26,27 +26,37 @@ const RegisterForm = () => {
     e.preventDefault();
 
     // Checking if there is any errors in the inputs then updating
-    setErrors(validate({ username, password, confirm, phone }));
 
-    return fetch("/register", {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        username: username,
-        password: password,
-        username_phone_number: phone
-      })
-    })
-      .then(function(response) {
-        window.location.pathname = "/login";
-        console.log(response);
-      })
-      .catch(function(error) {
-        console.log(error);
-      });
+    setErrors(validate({ username, password, confirm, phone }))
+console.log("pass" , password);
+console.log("confirm" ,confirm);
+          if(password !== confirm){
+              setErrors({confirm:"password not match"});
+              return false;
+          }else if(phone.length<10){
+            setErrors({phone:"phone number shuld be at least 10 numbers"});
+            return false;  
+          }else{
+            return fetch("/register", {
+              method: "POST",
+              headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json"
+              },
+              body: JSON.stringify({
+                username: username,
+                password: password,
+                username_phone_number: phone
+              })
+            })
+              .then(function(response) {
+                window.location.pathname = "/login";
+              })
+              .catch(function(error) {
+                console.log(error);
+              });
+            }
+    
   };
 
   return (

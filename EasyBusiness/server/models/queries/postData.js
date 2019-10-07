@@ -18,9 +18,9 @@ const postUserData = ({
           [username, hash, phone_number],
           (err, res) => {
             if (err) {
-              reject(err);
+              return reject(err);
             } else {
-              resolve(res);
+              return resolve(res);
             }
           }
         );

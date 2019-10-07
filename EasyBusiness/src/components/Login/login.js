@@ -20,20 +20,25 @@ const LoginForm = () => {
     e.preventDefault();
     setErrors(validate({ username, password }));
 
-    // return fetch(`/home?username=${username}&password=${password}`, {
-    //   method: "GET",
-    //   headers: {
-    //     Accept: "application/json",
-    //     "Content-Type": "application/json"
-    //   }
-    // })
-    //   .then(function(response) {
-    //     window.location.pathname = "/home";
-    //     console.log(response);
-    //   })
-    //   .catch(function(error) {
-    //     console.log(error);
-    //   });
+    return fetch(`/login?username=${username}&password=${password}`, {
+      method: "GET",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json"
+      }
+    })
+      .then((response)=> response.json())
+
+      .then((data)=>{
+      if(data.success)
+      {
+        window.location.pathname = "/home";
+      }else{
+          setErrors({password:"password or username is not correct"})
+      }})
+      .catch(function(error) {
+        console.log(error);
+      });
   };
 
   return (
@@ -66,7 +71,7 @@ const LoginForm = () => {
         </Link>
       </div>
       <div>
-        <Button type="submit" htmlType="submit" value="Login"></Button>
+        <Button type="submit" htmlType="submit" value="Login" onSubmit="CheckUser()"></Button>
       </div>
       <div>
         <Link to="/register" className="register-link">
