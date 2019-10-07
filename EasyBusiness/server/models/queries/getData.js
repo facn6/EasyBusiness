@@ -32,6 +32,20 @@ const getData = ({ username, password }) => {
   });
 };
 
+const getDealData =()=> {
+  return new Promise((resolve,reject)=>{
+    dbConnection.query("SELECT * FROM deals",(err,res)=>{
+    if(err)
+    {
+      reject(err);
+    }else{
+      resolve(res.rows);
+    }
+  });
+  })
+  
+};
+
 const getInventoryData =()=> {
   return new Promise((resolve,reject)=>{
     dbConnection.query("SELECT *, product_name AS value,product_name AS label FROM inventory",(err,res)=>{
@@ -81,5 +95,6 @@ module.exports =
   getData
   ,getInventoryData,
   getSuppliersData,
-  getCustomersData
+  getCustomersData,
+  getDealData
 };
