@@ -7,6 +7,7 @@ import RegisterForm from "./components/Register/register";
 import InventoryForm from "./components/Inventory/inventory";
 import SuppliersForm from './components/Suppliers/supplier';
 import CustomersForm from './components/Customers/customers';
+import DealForm from './components/Deals/deals';
 import ResetForm from "./components/ResetPassword/resetPassword";
 import Logo from "./components/Logo/logo";
 import Home from "./components/Home/home";
@@ -57,6 +58,8 @@ class App extends Component {
           </section>
           <section className="post-log">
             <Route path="/deals" component={PostLogMenu} />
+            <Route path="/deals" component={DealForm} />
+
           </section>
         </body>
         <footer>

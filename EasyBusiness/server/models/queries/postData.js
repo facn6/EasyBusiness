@@ -29,13 +29,31 @@ const postUserData = ({
   });
 };
 
+const postDealData = ({
+  deal_date_created,
+  deal_profit,
+  deal_total
+}) => {
+      return new Promise((resolve, reject) => {        
+        dbConnection.query(
+          "INSERT INTO deals (deal_date_created, deal_profit,deal_total) VALUES ($1, $2, $3)",
+          [deal_date_created, deal_profit,deal_total],
+          (err, res) => {
+            if (err) {
+              reject(err);
+            } else {
+              resolve(res);
+            }
+          }
+        );
+  });
+};
 const postInventoryData = ({
   product_name,
   product_price,
   product_quantity,
   supplier_price
-}) => {
-      return new Promise((resolve, reject) => {
+}) =>  new Promise((resolve, reject) => {
         dbConnection.query(
           "INSERT INTO inventory (product_name, product_price, product_quantity,supplier_price) VALUES ($1, $2, $3,$4)",
           [product_name, product_price, product_quantity,supplier_price],
@@ -48,7 +66,7 @@ const postInventoryData = ({
           }
         );
   });
-};
+
 
 const updateInventoryData = ({
   product_id,
@@ -221,5 +239,6 @@ module.exports = {
   deleteCusomerData,
   postSupplierData,
   updateSupplierData,
-  deleteSupplierData
+  deleteSupplierData,
+  postDealData
 }

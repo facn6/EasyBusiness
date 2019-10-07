@@ -37,8 +37,26 @@ app.get(`/login`, async (req, res, next) => {
     
   }
 });
+app.get('/deals',(req,res,next)=>{
+  getData.getDealData()
+  .then(dealData =>
+  {
+    res.send(dealData)
+  })
+  .catch(err => next(err));
+  })
 
-
+app.post('/deals/add',(req,res,next)=>{  
+  console.log("request " , req.body);
+  
+  postData.postDealData(req.body)
+  .then(dealData =>
+    {
+      res.send(dealData)
+  })
+  .catch(err => next(err));
+  })
+  
 app.get('/inventory',(req,res,next)=>{
 getData.getInventoryData()
 .then(inventoryData =>

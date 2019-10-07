@@ -1,67 +1,78 @@
 import React, { useState, useEffect } from "react";
 import "./home.css";
-import SearchBar from "../SearchBar/searchBar";
 import Button from "../Button/button";
+import CreatableSelect from 'react-select/creatable';
 
 const Home = () => {
-  const [search, setSearch] = useState("");
-  const [res, setRes] = useState("");
-  var result = document.querySelector(".result");
-  var Arr = [
-    "HTML",
-    "CSS",
-    "PHP",
-    "Javascript",
-    "Dart",
-    "Python",
-    "Swift",
-    "Java",
-    "C++",
-    "Go",
-    "SASS",
-    "C#",
-    "LESS",
-    "Perl",
-    "Ruby"
-  ];
+  const [state, setState] = useState({
+    columns: [],
+    data:[],
+    response: {}
+  });
+  const [product, setProduct]=useState([{product:"" , quantity:"" , price:"" , supplier_price:""}]);
+  const [sum, setSum]=useState(0);
+  const [profit , setProfit] = useState(0);
+
 
   useEffect(() => {
-    // auto complete function
-    function autoComplete(Arr, search) {
-      return Arr.filter(e => e.toLowerCase().includes(search.toLowerCase()));
-    }
+    fetch("/inventory")
+    .then(function(response) {
+      return response.json();
+    })
+    .then(function(data) {
+      setState({
+        columns: [
+          { title: "id", field: "product_id" , editable:"never" },
+          { title: "Product", field: "product_name" },
+          { title: "Price", field: "product_price" },
+          { title: "Quantity", field: "product_quantity" },
+          { title: "Supplier Price", field: "supplier_price" }
+        ],
+        data: data
+      });      
+    })
+    .catch(error => console.log(error));
 
-    function getValue(search) {
-      // if no value
-      if (!search) {
-        result.innerHTML = "";
-        return;
-      }
+  }, []);
 
-      // search goes here
-      var data = autoComplete(Arr, search);
 
-      // append list data
-      var ress = "<ul>";
-      data.forEach(e => {
-        ress += "<li>" + e + "</li>";
-      });
-      ress += "</ul>";
-      result.innerHTML = ress;
-      setRes("ress");
-    }
-  });
+  const handleChange = (newValue, actionMeta) => {
+    setProduct([...product,{product:newValue.product_name , price:newValue.product_price , quantity:1 , supplier_price:newValue.supplier_price}]);
+    setSum(sum+newValue.product_price);
+    setProfit(profit+(Number(newValue.product_price)-Number(newValue.supplier_price)));
+    
 
+  };
+  const handleInputChange = (inputValue, actionMeta) => {
+
+  };
+
+  const addNewDeal = (totalProfit , totalSum)=>{
+    fetch('/deals/add',{
+      method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json"
+        },
+        body:JSON.stringify({
+          deal_date_created:new Date(),
+          deal_profit : totalProfit,
+          deal_total: totalSum
+        })
+        })
+        .then(res => res.json())
+        .catch(error => console.log('ojnjhuhuhu',error));
+    
+  }
   return (
     <form>
       <section className="search-bar">
-        <SearchBar
-          type="text"
-          setInput={setSearch}
-          Input={search}
-          placeholder="Search"
-        />
-        <div className="result"> {res} </div>
+      <CreatableSelect
+        isClearable
+        onChange={handleChange}
+        onInputChange={handleInputChange}
+        options={state.data}
+      />
       </section>
       <table className="home-table">
         <tr className="home-tr">
@@ -69,25 +80,21 @@ const Home = () => {
           <th className="home-th">Price</th>
           <th className="home-th">Quantitiy</th>
         </tr>
-        <tr className="home-tr">
-          <td className="home-td">Eggs</td>
-          <td className="home-td">1</td>
-          <td className="home-td">2</td>
+          {product.map(function(item,i) {   
+            return (
+          <tr className="home-tr" key={i}>
+          <td className="home-td" >{item.product} </td>
+          <td className="home-td"  >{item.price} </td>
+          <td className="home-td">{item.quantity} </td>
         </tr>
-        <tr className="home-tr">
-          <td className="home-td">Milk</td>
-          <td className="home-td">10</td>
-          <td className="home-td">2</td>
-        </tr>
-        <tr className="home-tr">
-          <td className="home-td">Oats</td>
-          <td className="home-td">4</td>
-          <td className="home-td">10</td>
-        </tr>
+          )
+        })}   
       </table>
-      <section className="total"> 15 </section>
+      <section className="total">{sum}  </section>
       <section className="submit">
-        <Button value="Submit" />
+        <input class="hbutton" type="submit" value="Submit" onClick={(e) => {
+          //e.preventDefault()
+          addNewDeal(profit, sum)}} />
       </section>
     </form>
   );
